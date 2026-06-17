@@ -1,0 +1,603 @@
+<!-- =====================================================================
+     ESSENCE PSYCHOTHERAPY — ANXIETY THERAPY LANDING PAGE
+     Paste this ENTIRE block into a single Elementor "HTML" widget.
+     Everything is scoped under .essence-lp so it will NOT affect your
+     theme header, footer, or other pages. No Elementor Pro required.
+     Replace items marked  >>> REPLACE  with your real content.
+     ===================================================================== -->
+
+<div class="essence-lp">
+
+  <!-- Fonts: Fraunces (display, calm/literary) + Inter (body, clean) -->
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap');
+
+  /* ---------- DESIGN TOKENS (scoped) ---------- */
+  .essence-lp{
+    --ink:#26302F;          /* deep heading / text */
+    --teal:#154349;         /* brand structural */
+    --teal-deep:#0E2F34;    /* darker depth */
+    --coral:#F27D72;        /* primary accent / CTA */
+    --coral-soft:#F8A99F;   /* hover light */
+    --coral-tint:#FCE6E1;   /* coral wash */
+    --mist:#D1DAE5;         /* cool soft bg */
+    --mist-soft:#E7ECF2;    /* lighter cool */
+    --cream:#F7F4EF;        /* warm paper bg */
+    --paper:#FCFAF6;        /* card warm white */
+    --line:rgba(21,67,73,.12);
+    --shadow-sm:0 6px 18px rgba(21,67,73,.07);
+    --shadow-md:0 18px 44px rgba(21,67,73,.12);
+    --shadow-lg:0 30px 70px rgba(21,67,73,.16);
+    --r-lg:26px; --r-md:18px; --r-sm:12px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:clip;
+  }
+  .essence-lp *,.essence-lp *::before,.essence-lp *::after{box-sizing:border-box;margin:0;padding:0;}
+  .essence-lp img{max-width:100%;height:auto;display:block;}
+
+  /* ---------- LAYOUT HELPERS ---------- */
+  .essence-lp .elp-wrap{max-width:1160px;margin:0 auto;padding:0 22px;}
+  .essence-lp .elp-section{padding:clamp(56px,8vw,108px) 0;position:relative;}
+  .essence-lp .elp-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--teal);
+  }
+  .essence-lp .elp-eyebrow::before{content:"";width:26px;height:1.5px;background:var(--coral);border-radius:2px;}
+  .essence-lp .elp-eyebrow.is-light{color:rgba(255,255,255,.72);}
+  .essence-lp .elp-eyebrow.is-light::before{background:var(--coral);}
+
+  .essence-lp h1,.essence-lp h2,.essence-lp h3{
+    font-family:'Fraunces',Georgia,serif;color:var(--ink);
+    font-weight:500;line-height:1.08;letter-spacing:-.01em;
+  }
+  .essence-lp h2{font-size:clamp(1.9rem,4.4vw,3rem);margin:14px 0 16px;}
+  .essence-lp h3{font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.2;}
+  .essence-lp .elp-lead{font-size:clamp(1.02rem,1.6vw,1.18rem);color:rgba(38,48,47,.78);max-width:60ch;}
+  .essence-lp .elp-center{text-align:center;margin-inline:auto;}
+
+  /* ---------- BUTTONS ---------- */
+  .essence-lp .elp-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:1rem;
+    padding:15px 30px;border-radius:999px;border:0;cursor:pointer;
+    text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s,color .3s;
+    will-change:transform;
+  }
+  .essence-lp .elp-btn--primary{background:var(--coral);color:#fff;box-shadow:0 12px 26px rgba(242,125,114,.4);}
+  .essence-lp .elp-btn--primary:hover{background:#ef6a5d;transform:translateY(-3px);box-shadow:0 18px 34px rgba(242,125,114,.5);}
+  .essence-lp .elp-btn--ghost{background:transparent;color:var(--teal);border:1.5px solid var(--line);}
+  .essence-lp .elp-btn--ghost:hover{border-color:var(--teal);transform:translateY(-3px);background:rgba(21,67,73,.04);}
+  .essence-lp .elp-btn--onteal{background:#fff;color:var(--teal);}
+  .essence-lp .elp-btn--onteal:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(0,0,0,.25);}
+  .essence-lp .elp-btn--ghost-light{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+  .essence-lp .elp-btn--ghost-light:hover{border-color:#fff;transform:translateY(-3px);background:rgba(255,255,255,.08);}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .essence-lp .elp-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .essence-lp .elp-reveal.is-in{opacity:1;transform:none;}
+
+  /* ====================================================================
+     1. HERO  — warm paper base + signature "breathing" rings
+     ==================================================================== */
+  .essence-lp .elp-hero{
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(209,218,229,.55), transparent 60%),
+      linear-gradient(180deg,var(--cream) 0%,var(--paper) 100%);
+    padding:clamp(64px,9vw,120px) 0 clamp(70px,9vw,120px);
+    position:relative;overflow:hidden;
+  }
+  /* signature: slow breathing rings behind hero */
+  .essence-lp .elp-breath{
+    position:absolute;top:-90px;right:-120px;width:560px;height:560px;
+    pointer-events:none;z-index:0;opacity:.55;
+  }
+  .essence-lp .elp-breath span{
+    position:absolute;inset:0;margin:auto;border-radius:50%;
+    border:1.5px solid rgba(21,67,73,.18);
+    animation:elpBreathe 11s var(--ease) infinite;
+  }
+  .essence-lp .elp-breath span:nth-child(1){width:46%;height:46%;background:rgba(242,125,114,.10);border-color:rgba(242,125,114,.28);}
+  .essence-lp .elp-breath span:nth-child(2){width:72%;height:72%;animation-delay:-.6s;}
+  .essence-lp .elp-breath span:nth-child(3){width:100%;height:100%;animation-delay:-1.2s;}
+  @keyframes elpBreathe{0%,100%{transform:scale(.82);opacity:.5;}45%{transform:scale(1.04);opacity:.9;}}
+
+  .essence-lp .elp-hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,5vw,68px);align-items:center;}
+  .essence-lp .elp-hero h1{font-size:clamp(2.4rem,6vw,4rem);margin:20px 0 18px;font-weight:500;}
+  .essence-lp .elp-hero h1 em{font-style:italic;color:var(--teal);}
+  .essence-lp .elp-hero p{font-size:clamp(1.05rem,1.7vw,1.22rem);color:rgba(38,48,47,.78);max-width:46ch;}
+  .essence-lp .elp-hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 22px;}
+  .essence-lp .elp-hero-proof{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.92rem;color:rgba(38,48,47,.7);}
+  .essence-lp .elp-hero-proof span{display:inline-flex;align-items:center;gap:7px;}
+  .essence-lp .elp-hero-proof span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);}
+
+  /* hero image — soft framed, floating accent */
+  .essence-lp .elp-hero-media{position:relative;}
+  .essence-lp .elp-hero-media img{
+    border-radius:var(--r-lg);box-shadow:var(--shadow-lg);
+    aspect-ratio:4/5;object-fit:cover;width:100%;
+  }
+  .essence-lp .elp-hero-badge{
+    position:absolute;left:-18px;bottom:26px;background:rgba(252,250,246,.85);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.6);border-radius:var(--r-md);
+    padding:14px 18px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:12px;max-width:235px;
+  }
+  .essence-lp .elp-hero-badge b{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--teal);line-height:1;}
+  .essence-lp .elp-hero-badge small{font-size:.8rem;color:rgba(38,48,47,.7);line-height:1.3;}
+
+  /* ====================================================================
+     2. TRUST STRIP
+     ==================================================================== */
+  .essence-lp .elp-trust{background:var(--teal);position:relative;}
+  .essence-lp .elp-trust .elp-trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border-radius:var(--r-md);overflow:hidden;}
+  .essence-lp .elp-trust-item{background:var(--teal);padding:26px 22px;text-align:center;color:#fff;}
+  .essence-lp .elp-trust-item b{display:block;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.6vw,1.7rem);color:#fff;margin-bottom:4px;}
+  .essence-lp .elp-trust-item span{font-size:.86rem;color:rgba(255,255,255,.72);}
+
+  /* ====================================================================
+     3. EMPATHY  (cool mist bg)
+     ==================================================================== */
+  .essence-lp .elp-empathy{background:linear-gradient(180deg,var(--mist-soft),var(--mist));}
+  .essence-lp .elp-empathy .elp-wrap{max-width:980px;}
+  .essence-lp .elp-quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;}
+  .essence-lp .elp-quote{
+    background:rgba(255,255,255,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.6);border-radius:var(--r-md);padding:26px 24px;
+    box-shadow:var(--shadow-sm);font-family:'Fraunces',serif;font-style:italic;font-size:1.08rem;color:var(--teal);
+  }
+  .essence-lp .elp-quote::before{content:"“";font-size:2.4rem;line-height:0;color:var(--coral);display:block;margin-bottom:14px;}
+
+  /* ====================================================================
+     4. TYPES OF ANXIETY (split: chips + image)  warm paper
+     ==================================================================== */
+  .essence-lp .elp-types{background:var(--paper);}
+  .essence-lp .elp-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;}
+  .essence-lp .elp-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+  .essence-lp .elp-chip{
+    background:var(--cream);border:1px solid var(--line);border-radius:999px;
+    padding:11px 20px;font-weight:500;font-size:.96rem;color:var(--ink);
+    transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s;
+  }
+  .essence-lp .elp-chip:hover{background:var(--teal);color:#fff;border-color:var(--teal);transform:translateY(-2px);}
+  .essence-lp .elp-types-media img{border-radius:var(--r-lg);box-shadow:var(--shadow-md);aspect-ratio:1/1;object-fit:cover;width:100%;}
+
+  /* ====================================================================
+     5. COMMON EXPERIENCES — 4 cards  (cool gradient)
+     ==================================================================== */
+  .essence-lp .elp-exp{background:linear-gradient(180deg,var(--mist),var(--mist-soft));}
+  .essence-lp .elp-card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:42px;}
+  .essence-lp .elp-exp-card{
+    background:var(--paper);border-radius:var(--r-lg);padding:34px 32px;
+    box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,.7);
+    transition:transform .4s var(--ease),box-shadow .4s var(--ease);position:relative;overflow:hidden;
+  }
+  .essence-lp .elp-exp-card::after{content:"";position:absolute;left:0;top:0;height:100%;width:4px;background:var(--coral);transform:scaleY(0);transform-origin:top;transition:transform .4s var(--ease);}
+  .essence-lp .elp-exp-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  .essence-lp .elp-exp-card:hover::after{transform:scaleY(1);}
+  .essence-lp .elp-tag{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);}
+  .essence-lp .elp-exp-card h3{margin:10px 0 16px;}
+  .essence-lp .elp-exp-card .elp-sep{height:1px;background:var(--line);margin:0 0 16px;}
+  .essence-lp .elp-exp-card .elp-support-label{font-size:.78rem;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:8px;}
+  .essence-lp .elp-exp-card p{color:rgba(38,48,47,.78);}
+
+  /* ====================================================================
+     6. HOW IT WORKS — steps  (teal dark band)
+     ==================================================================== */
+  .essence-lp .elp-process{background:var(--teal);color:#fff;}
+  .essence-lp .elp-process h2,.essence-lp .elp-process h3{color:#fff;}
+  .essence-lp .elp-process .elp-lead{color:rgba(255,255,255,.78);}
+  .essence-lp .elp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;counter-reset:step;}
+  .essence-lp .elp-step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:34px 28px;transition:transform .4s var(--ease),background .4s;}
+  .essence-lp .elp-step:hover{transform:translateY(-6px);background:rgba(255,255,255,.1);}
+  .essence-lp .elp-step .elp-num{
+    width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:var(--coral);color:#fff;font-family:'Fraunces',serif;font-size:1.25rem;margin-bottom:18px;
+  }
+  .essence-lp .elp-step p{color:rgba(255,255,255,.74);margin-top:8px;}
+
+  /* ====================================================================
+     7. APPROACH / WHY  (warm paper) — overlapping CTA card
+     ==================================================================== */
+  .essence-lp .elp-why{background:var(--paper);}
+  .essence-lp .elp-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px;}
+  .essence-lp .elp-why-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;transition:transform .4s var(--ease),box-shadow .4s;}
+  .essence-lp .elp-why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);background:#fff;}
+  .essence-lp .elp-ic{width:52px;height:52px;border-radius:14px;background:var(--coral-tint);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .essence-lp .elp-ic svg{width:26px;height:26px;stroke:var(--teal);fill:none;stroke-width:1.8;}
+  .essence-lp .elp-why-card p{color:rgba(38,48,47,.78);margin-top:8px;}
+
+  /* ====================================================================
+     8. TESTIMONIALS  (cool mist)
+     ==================================================================== */
+  .essence-lp .elp-reviews{background:linear-gradient(180deg,var(--mist-soft),var(--mist));}
+  .essence-lp .elp-rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px;}
+  .essence-lp .elp-rev-card{background:var(--paper);border-radius:var(--r-lg);padding:30px 28px;box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,.7);display:flex;flex-direction:column;gap:14px;}
+  .essence-lp .elp-stars{color:var(--coral);letter-spacing:2px;font-size:1rem;}
+  .essence-lp .elp-rev-card p{font-family:'Fraunces',serif;font-style:italic;color:var(--ink);font-size:1.05rem;flex:1;}
+  .essence-lp .elp-rev-who{display:flex;align-items:center;gap:12px;}
+  .essence-lp .elp-rev-avatar{width:42px;height:42px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-family:'Fraunces',serif;}
+  .essence-lp .elp-rev-who b{font-size:.95rem;}
+  .essence-lp .elp-rev-who span{font-size:.82rem;color:rgba(38,48,47,.6);}
+  .essence-lp .elp-note{font-size:.82rem;color:rgba(38,48,47,.55);text-align:center;margin-top:26px;font-style:italic;}
+
+  /* ====================================================================
+     9. FAQ accordion  (warm paper)
+     ==================================================================== */
+  .essence-lp .elp-faq{background:var(--paper);}
+  .essence-lp .elp-faq .elp-wrap{max-width:860px;}
+  .essence-lp .elp-acc{border-bottom:1px solid var(--line);}
+  .essence-lp .elp-acc-q{
+    width:100%;text-align:left;background:none;border:0;cursor:pointer;
+    padding:24px 6px;display:flex;justify-content:space-between;align-items:center;gap:18px;
+    font-family:'Fraunces',serif;font-size:clamp(1.05rem,2vw,1.22rem);color:var(--ink);font-weight:500;
+  }
+  .essence-lp .elp-acc-icon{flex:none;width:30px;height:30px;border-radius:50%;background:var(--coral-tint);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:transform .35s var(--ease),background .3s;line-height:1;}
+  .essence-lp .elp-acc.is-open .elp-acc-icon{background:var(--coral);color:#fff;transform:rotate(45deg);}
+  .essence-lp .elp-acc-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .essence-lp .elp-acc-a p{padding:0 6px 24px;color:rgba(38,48,47,.78);}
+
+  /* ====================================================================
+     10. FINAL CTA  (deep teal gradient band)
+     ==================================================================== */
+  .essence-lp .elp-final{
+    background:radial-gradient(900px 400px at 50% -20%,rgba(242,125,114,.22),transparent 60%),
+               linear-gradient(160deg,var(--teal),var(--teal-deep));
+    color:#fff;text-align:center;
+  }
+  .essence-lp .elp-final .elp-wrap{max-width:760px;}
+  .essence-lp .elp-final h2{color:#fff;font-size:clamp(2rem,5vw,3.2rem);}
+  .essence-lp .elp-final p{color:rgba(255,255,255,.82);font-size:clamp(1.02rem,1.6vw,1.18rem);margin:14px auto 30px;max-width:52ch;}
+  .essence-lp .elp-final-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .essence-lp .elp-disclaimer{font-size:.82rem;color:rgba(255,255,255,.55);margin-top:34px;max-width:60ch;margin-inline:auto;}
+
+  /* curved divider helper */
+  .essence-lp .elp-wave{display:block;width:100%;height:auto;line-height:0;}
+
+  /* ====================================================================
+     RESPONSIVE
+     ==================================================================== */
+  @media (max-width:900px){
+    .essence-lp .elp-hero-grid{grid-template-columns:1fr;gap:40px;}
+    .essence-lp .elp-hero-media{max-width:440px;margin:0 auto;}
+    .essence-lp .elp-trust .elp-trust-grid{grid-template-columns:repeat(2,1fr);}
+    .essence-lp .elp-quote-grid{grid-template-columns:1fr;}
+    .essence-lp .elp-split{grid-template-columns:1fr;}
+    .essence-lp .elp-types-media{order:-1;max-width:480px;margin:0 auto;}
+    .essence-lp .elp-card-grid{grid-template-columns:1fr;}
+    .essence-lp .elp-steps{grid-template-columns:1fr;}
+    .essence-lp .elp-why-grid{grid-template-columns:1fr;}
+    .essence-lp .elp-rev-grid{grid-template-columns:1fr;}
+    .essence-lp .elp-breath{width:340px;height:340px;top:-60px;right:-80px;}
+  }
+  @media (max-width:480px){
+    .essence-lp .elp-hero-cta .elp-btn,.essence-lp .elp-final-cta .elp-btn{width:100%;}
+    .essence-lp .elp-hero-badge{left:0;}
+  }
+
+  /* accessibility: respect reduced motion */
+  @media (prefers-reduced-motion:reduce){
+    .essence-lp *{animation:none !important;transition:none !important;}
+    .essence-lp .elp-reveal{opacity:1;transform:none;}
+  }
+  /* keyboard focus visibility */
+  .essence-lp a:focus-visible,.essence-lp button:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:6px;}
+  </style>
+
+
+  <!-- ===================== 1. HERO ===================== -->
+  <section class="elp-hero">
+    <div class="elp-breath" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="elp-wrap">
+      <div class="elp-hero-grid">
+        <div class="elp-reveal">
+          <span class="elp-eyebrow">Online Anxiety Therapy · Ontario</span>
+          <h1>Anxiety Therapy <em>in Ontario</em></h1>
+          <p>Support for racing thoughts, overwhelm, chronic worry, panic, and high-functioning anxiety — from anywhere in Ontario.</p>
+          <div class="elp-hero-cta">
+            <!-- >>> REPLACE href with your booking link -->
+            <a class="elp-btn elp-btn--primary" href="#book">Book your free 20-minute call</a>
+            <a class="elp-btn elp-btn--ghost" href="#how">See how it works</a>
+          </div>
+          <div class="elp-hero-proof">
+            <span>100% online sessions</span>
+            <span>Free first consultation</span>
+            <span>No referral needed</span>
+          </div>
+        </div>
+
+        <div class="elp-hero-media elp-reveal">
+          <!-- >>> REPLACE: calm lifestyle portrait, portrait/4:5, ~900×1125px, soft natural light -->
+          <img src="https://plus.unsplash.com/premium_photo-1661775504055-4187ceef9651?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YW54aWV0eXxlbnwwfHwwfHx8MA%3D%3D"
+               alt="A person standing calmly by a window in soft natural light" loading="lazy">
+          <div class="elp-hero-badge">
+            <b>20</b>
+            <small>minute consultation, free &amp; no pressure</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 2. TRUST STRIP ===================== -->
+  <section class="elp-section elp-trust">
+    <div class="elp-wrap">
+      <div class="elp-trust-grid elp-reveal">
+        <!-- >>> REPLACE these with accurate, verifiable facts about your practice -->
+        <div class="elp-trust-item"><b>Ontario-wide</b><span>Secure online sessions</span></div>
+        <div class="elp-trust-item"><b>Free</b><span>20-minute consultation</span></div>
+        <div class="elp-trust-item"><b>Registered</b><span>Qualified psychotherapists</span></div>
+        <div class="elp-trust-item"><b>Flexible</b><span>Evening &amp; daytime slots</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 3. EMPATHY ===================== -->
+  <section class="elp-section elp-empathy">
+    <div class="elp-wrap">
+      <div class="elp-reveal">
+        <span class="elp-eyebrow">You're not imagining it</span>
+        <h2>You may be managing more than it looks like</h2>
+        <p class="elp-lead">Anxiety is one of the most common reasons people reach out for therapy in Ontario — often after months of quietly holding it together. If any of these sound familiar, you're far from alone.</p>
+      </div>
+      <div class="elp-quote-grid">
+        <div class="elp-quote elp-reveal">Why do I feel anxious all the time?</div>
+        <div class="elp-quote elp-reveal">Why is my mind racing at night?</div>
+        <div class="elp-quote elp-reveal">Why do I feel overwhelmed for no clear reason?</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 4. TYPES OF ANXIETY ===================== -->
+  <section class="elp-section elp-types">
+    <div class="elp-wrap">
+      <div class="elp-split">
+        <div class="elp-reveal">
+          <span class="elp-eyebrow">What we work with</span>
+          <h2>Types of anxiety we commonly explore</h2>
+          <p class="elp-lead">Anxiety shows up differently for everyone. Sessions are shaped around what you're actually experiencing — not a one-size-fits-all label.</p>
+          <div class="elp-chips">
+            <span class="elp-chip">Generalized Anxiety (GAD)</span>
+            <span class="elp-chip">Social Anxiety</span>
+            <span class="elp-chip">Panic &amp; panic symptoms</span>
+            <span class="elp-chip">Health Anxiety</span>
+            <span class="elp-chip">Separation Anxiety</span>
+            <span class="elp-chip">Performance Anxiety</span>
+            <span class="elp-chip">Anticipatory Worry</span>
+            <span class="elp-chip">OCD-related anxiety</span>
+          </div>
+        </div>
+        <div class="elp-types-media elp-reveal">
+          <!-- >>> REPLACE: warm, calm lifestyle image, square 1:1, ~800×800px -->
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80"
+               alt="A calm, restful moment in soft light" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 5. COMMON EXPERIENCES ===================== -->
+  <section class="elp-section elp-exp">
+    <div class="elp-wrap">
+      <div class="elp-center elp-reveal" style="max-width:620px;">
+        <span class="elp-eyebrow" style="justify-content:center;">In session</span>
+        <h2>Common experiences of anxiety</h2>
+        <p class="elp-lead elp-center">A look at what people often bring in — and how therapy can gently support each one.</p>
+      </div>
+      <div class="elp-card-grid">
+        <div class="elp-exp-card elp-reveal">
+          <span class="elp-tag">Experience</span>
+          <h3>Racing thoughts at night or trouble sleeping</h3>
+          <div class="elp-sep"></div>
+          <span class="elp-support-label">How therapy may support you</span>
+          <p>Explore patterns of rumination and how night-time anxiety affects rest and recovery.</p>
+        </div>
+        <div class="elp-exp-card elp-reveal">
+          <span class="elp-tag">Experience</span>
+          <h3>Social anxiety and fear of judgment</h3>
+          <div class="elp-sep"></div>
+          <span class="elp-support-label">How therapy may support you</span>
+          <p>Reflect on where social anxiety comes from and how it shows up in relationships and daily life.</p>
+        </div>
+        <div class="elp-exp-card elp-reveal">
+          <span class="elp-tag">Experience</span>
+          <h3>Panic attacks or intense physical symptoms</h3>
+          <div class="elp-sep"></div>
+          <span class="elp-support-label">How therapy may support you</span>
+          <p>Build a clearer understanding of panic symptoms and how anxiety is experienced in the body.</p>
+        </div>
+        <div class="elp-exp-card elp-reveal">
+          <span class="elp-tag">Experience</span>
+          <h3>Constant worry and overthinking</h3>
+          <div class="elp-sep"></div>
+          <span class="elp-support-label">How therapy may support you</span>
+          <p>Explore how chronic worry develops and how it connects to uncertainty and the need for control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 6. HOW IT WORKS ===================== -->
+  <section class="elp-section elp-process" id="how">
+    <div class="elp-wrap">
+      <div class="elp-center elp-reveal" style="max-width:620px;">
+        <span class="elp-eyebrow is-light" style="justify-content:center;">Simple &amp; supported</span>
+        <h2>How working together begins</h2>
+        <p class="elp-lead elp-center">No pressure, no commitment to start — just a calm first conversation.</p>
+      </div>
+      <div class="elp-steps">
+        <div class="elp-step elp-reveal">
+          <div class="elp-num">1</div>
+          <h3>Book your free call</h3>
+          <p>Choose a time that suits you for a relaxed 20-minute conversation, online from anywhere in Ontario.</p>
+        </div>
+        <div class="elp-step elp-reveal">
+          <div class="elp-num">2</div>
+          <h3>Talk it through</h3>
+          <p>Share what's been going on. We'll explore what you're hoping for and whether it feels like a good fit.</p>
+        </div>
+        <div class="elp-step elp-reveal">
+          <div class="elp-num">3</div>
+          <h3>Begin at your pace</h3>
+          <p>If it feels right, we start regular sessions shaped entirely around you — and you can pause anytime.</p>
+        </div>
+      </div>
+      <div class="elp-center" style="margin-top:42px;">
+        <a class="elp-btn elp-btn--onteal" href="#book">Book your free 20-minute call</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 7. APPROACH / WHY ===================== -->
+  <section class="elp-section elp-why">
+    <div class="elp-wrap">
+      <div class="elp-center elp-reveal" style="max-width:640px;">
+        <span class="elp-eyebrow" style="justify-content:center;">Our approach</span>
+        <h2>What to expect in anxiety therapy</h2>
+        <p class="elp-lead elp-center">Therapy here is collaborative and grounded in evidence — drawing on what feels most relevant to you.</p>
+      </div>
+      <div class="elp-why-grid">
+        <div class="elp-why-card elp-reveal">
+          <div class="elp-ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Evidence-based methods</h3>
+          <p>Approaches such as CBT, mindfulness-based practices, and emotionally focused or parts-informed work.</p>
+        </div>
+        <div class="elp-why-card elp-reveal">
+          <div class="elp-ic"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M2 12h2M20 12h2M12 4V2"/><circle cx="12" cy="13" r="3"/></svg></div>
+          <h3>Online &amp; flexible</h3>
+          <p>Access consistent support from a private, comfortable space — wherever you are in Ontario.</p>
+        </div>
+        <div class="elp-why-card elp-reveal">
+          <div class="elp-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.65-9 9-9 9z"/></svg></div>
+          <h3>Paced around you</h3>
+          <p>Sessions move at a speed that feels safe, focusing on the patterns that matter most in your life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 8. TESTIMONIALS ===================== -->
+  <section class="elp-section elp-reviews">
+    <div class="elp-wrap">
+      <div class="elp-center elp-reveal" style="max-width:600px;">
+        <span class="elp-eyebrow" style="justify-content:center;">In their words</span>
+        <h2>Support that makes a difference</h2>
+      </div>
+      <div class="elp-rev-grid">
+        <!-- >>> REPLACE with real, consented client feedback (see note + compliance flag in chat) -->
+        <div class="elp-rev-card elp-reveal">
+          <div class="elp-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>Placeholder review — replace with a genuine, consented quote describing the client's experience.</p>
+          <div class="elp-rev-who"><div class="elp-rev-avatar">A</div><div><b>First name</b><span>Ontario</span></div></div>
+        </div>
+        <div class="elp-rev-card elp-reveal">
+          <div class="elp-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>Placeholder review — replace with a genuine, consented quote describing the client's experience.</p>
+          <div class="elp-rev-who"><div class="elp-rev-avatar">B</div><div><b>First name</b><span>Ontario</span></div></div>
+        </div>
+        <div class="elp-rev-card elp-reveal">
+          <div class="elp-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>Placeholder review — replace with a genuine, consented quote describing the client's experience.</p>
+          <div class="elp-rev-who"><div class="elp-rev-avatar">C</div><div><b>First name</b><span>Ontario</span></div></div>
+        </div>
+      </div>
+      <p class="elp-note">Replace placeholders with real, consented feedback. Confirm testimonial use complies with your regulatory college (e.g. CRPO) before publishing.</p>
+    </div>
+  </section>
+
+
+  <!-- ===================== 9. FAQ ===================== -->
+  <section class="elp-section elp-faq">
+    <div class="elp-wrap">
+      <div class="elp-center elp-reveal" style="max-width:600px;">
+        <span class="elp-eyebrow" style="justify-content:center;">Good to know</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div style="margin-top:36px;">
+        <div class="elp-acc elp-reveal">
+          <button class="elp-acc-q" aria-expanded="false">How do I know if I need therapy for anxiety?<span class="elp-acc-icon" aria-hidden="true">+</span></button>
+          <div class="elp-acc-a"><p>Therapy can help when anxiety symptoms start affecting your sleep, focus, relationships, or daily life. You don't need to be in crisis — many people come simply because something feels harder to manage on their own.</p></div>
+        </div>
+        <div class="elp-acc elp-reveal">
+          <button class="elp-acc-q" aria-expanded="false">Can online therapy really help with anxiety?<span class="elp-acc-icon" aria-hidden="true">+</span></button>
+          <div class="elp-acc-a"><p>Yes. Online therapy offers a consistent, private space to explore your experiences and build understanding over time — with the added flexibility of meeting from wherever you feel comfortable.</p></div>
+        </div>
+        <div class="elp-acc elp-reveal">
+          <button class="elp-acc-q" aria-expanded="false">What are common anxiety symptoms?<span class="elp-acc-icon" aria-hidden="true">+</span></button>
+          <div class="elp-acc-a"><p>Symptoms can include racing thoughts, constant worry, difficulty sleeping, physical tension, and a persistent feeling of being on edge. They look different for everyone.</p></div>
+        </div>
+        <div class="elp-acc elp-reveal">
+          <button class="elp-acc-q" aria-expanded="false">When should I consider therapy for anxiety?<span class="elp-acc-icon" aria-hidden="true">+</span></button>
+          <div class="elp-acc-a"><p>If worry, overwhelm, or physical tension have been showing up regularly and feel difficult to manage alone, it may be a helpful time to reach out. A free consultation is a low-pressure way to explore whether it's a good fit.</p></div>
+        </div>
+        <div class="elp-acc elp-reveal">
+          <button class="elp-acc-q" aria-expanded="false">What happens in the free 20-minute call?<span class="elp-acc-icon" aria-hidden="true">+</span></button>
+          <div class="elp-acc-a"><p>It's a relaxed conversation — no commitment. You can share what's going on, ask questions, and get a feel for whether working together feels right for you.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== 10. FINAL CTA ===================== -->
+  <section class="elp-section elp-final" id="book">
+    <div class="elp-wrap">
+      <div class="elp-reveal">
+        <h2>You don't have to figure this out on your own</h2>
+        <p>A brief, friendly consultation can help you explore whether therapy feels like the right next step.</p>
+        <div class="elp-final-cta">
+          <!-- >>> REPLACE all hrefs with your real booking / page links -->
+          <a class="elp-btn elp-btn--primary" href="#">Book your free 20-minute call</a>
+          <a class="elp-btn elp-btn--ghost-light" href="#">Explore our approach</a>
+        </div>
+        <p class="elp-disclaimer">Therapy provides support for anxiety over time; experiences and outcomes differ for each individual. If you are in crisis or need urgent help, please contact local emergency services or a crisis line.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- ===================== SCRIPT ===================== -->
+<script>
+(function(){
+  var root = document.querySelector('.essence-lp');
+  if(!root) return;
+
+  /* FAQ accordion */
+  root.querySelectorAll('.elp-acc-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var acc = btn.parentElement;
+      var panel = acc.querySelector('.elp-acc-a');
+      var open = acc.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px';
+    });
+  });
+
+  /* Scroll reveal (skips if user prefers reduced motion) */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = root.querySelectorAll('.elp-reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    },{ threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
